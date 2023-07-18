@@ -1,0 +1,14 @@
+.contenedor-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  }
+  
+  
+  @media (max-width: 768px) {
+    .ccontenedor-features {
+      width: 90%; /* Ajusta el ancho de cada componente en dispositivos móviles */
+    }
+  }
+  

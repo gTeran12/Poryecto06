@@ -233,13 +233,32 @@
       </div>
   </div>
 </section>
+
 <!-- Tabla -->
-<!--section class="page-section" id="tabla">
+<section class="page-section" id="tabla">
 <h1>Tabla:</h1>
 <app-tabla></app-tabla>
-</section-->
+</section>
+
 <section class="page-section">
-<app-card-reverse></app-card-reverse>
+    <div class="contenedor-tarjetas">
+        <ng-container *ngFor="let componente of componentes">
+            <ng-container *ngIf="componente.tipo === 'ComponenteA'">
+              <app-card-reverse [titulo]="componente.titulo" [texto]="componente.texto" [imagen]="componente.imagen"></app-card-reverse>
+            </ng-container>
+          
+            <ng-container *ngIf="componente.tipo === 'ComponenteB'">
+              <app-card  [imagen]="componente.imagen" [titulo]="componente.titulo" [texto]="componente.texto" ></app-card>
+            </ng-container>
+          </ng-container>
+      </div>
+
+      <div class="contenedor-features">
+        <ng-container *ngFor="let componente of features">
+              <app-feature [titulo]="componente.titulo" [texto]="componente.texto" [imagen]="componente.imagen"></app-feature>
+        </ng-container>
+      </div>
+      
 </section>
 
 <!-- Footer-->

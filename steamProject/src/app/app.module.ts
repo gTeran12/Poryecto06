@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { TablaComponent } from './tabla/tabla.component';
 import { CardReverseComponent } from './card-reverse/card-reverse.component';
+import { CardComponent } from './card/card.component';
+import { FeatureComponent } from './feature/feature.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
-    CardReverseComponent
+    CardReverseComponent,
+    CardComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,

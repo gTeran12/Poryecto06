@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%; /* Ajusta la altura del contenedor a la altura de la ventana */
+    background-color: rgb(49, 46, 46);
+    color: white;
+  }
+  
+  .text {
+    margin-right: 10px; /* Margen de separación entre el texto y la imagen */
+    max-width: 300px; /* Ancho máximo deseado para el texto */
+  }
+  
+  
+  .image {
+    margin-left: 10px; /* Margen de separación entre la imagen y el texto */
+  }
+  
+  .image img {
+    width: 200px; /* Ancho deseado para la imagen */
+    height: auto; /* Altura ajustada automáticamente */
+  }
+  

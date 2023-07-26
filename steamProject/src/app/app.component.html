@@ -235,6 +235,36 @@
 
 </section>
 
+<<<<<<< HEAD
+=======
+<!-- Tabla -->
+<section class="page-section" id="tabla">
+<h1>Tabla:</h1>
+<app-tabla></app-tabla>
+</section>
+
+<section class="page-section">
+    <div class="contenedor-tarjetas">
+        <ng-container *ngFor="let componente of componentes">
+            <ng-container *ngIf="componente.tipo === 'ComponenteA'">
+              <app-card-reverse [titulo]="componente.titulo" [texto]="componente.texto" [imagen]="componente.imagen"></app-card-reverse>
+            </ng-container>
+          
+            <ng-container *ngIf="componente.tipo === 'ComponenteB'">
+              <app-card  [imagen]="componente.imagen" [titulo]="componente.titulo" [texto]="componente.texto" ></app-card>
+            </ng-container>
+          </ng-container>
+      </div>
+
+      <div class="contenedor-features">
+        <ng-container *ngFor="let componente of features">
+              <app-feature [titulo]="componente.titulo" [texto]="componente.texto" [imagen]="componente.imagen"></app-feature>
+        </ng-container>
+      </div>
+      
+</section>
+
+>>>>>>> 14fd8927507ffe89eac58f6ad1477a713f3a67a1
 <!-- Footer-->
 <footer class="bg-light py-5">
   <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>

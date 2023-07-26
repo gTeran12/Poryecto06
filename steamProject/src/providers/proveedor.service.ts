@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProveedorService {
 
-  private URL: string = 'https://laptopsdataset-default-rtdb.firebaseio.com/collection.json';
+  private URL: string = 'https://steamgames-dawm-default-rtdb.firebaseio.com/collection.json';
   constructor(private http:HttpClient) { }
   //Método con la petición HTTP
   getResponse() {

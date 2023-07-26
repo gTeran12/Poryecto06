@@ -1,10 +1,10 @@
  <!-- Tabla con datos -->
  <table>
     <tbody>
-        <tr *ngFor="let datum of data.slice(0, 10)">
-            <th> {{  datum.Brand  }}  </th>
-            <th> {{  datum.Laptop  }}  </th>
-            <th> {{  datum.Touch  }}  </th>
+        <tr *ngFor="let datum of data.slice(0, 100)">
+            <th> {{  datum.name  }}  </th>
+            <th> {{  datum.price  }}  </th>
+            <th> {{  datum.genres  }}  </th>
         </tr>
     </tbody>
 </table>

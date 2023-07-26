@@ -18,9 +18,6 @@ import { FeatureComponent } from './feature/feature.component';
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    CardsSectionComponent
-=======
     TablaComponent,
     CardReverseComponent,
     CardComponent,

@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CardsSectionComponent } from './cards-section/cards-section.component';
+
+import { FormsModule } from '@angular/forms'; // Import the FormsModule
+
 
 
 //Importación del módulo
@@ -24,7 +26,9 @@ import { FeatureComponent } from './feature/feature.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

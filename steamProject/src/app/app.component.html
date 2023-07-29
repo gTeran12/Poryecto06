@@ -18,9 +18,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto my-2 my-lg-0">
               <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-              <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="#table">Table</a></li>
+              <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Features">Features</a></li>
           </ul>
       </div>
   </div>
@@ -43,12 +43,12 @@
 
 
 <!-- Tabla -->
-<section class="page-section" id="tabla">
+<section class="page-section" id="table">
 <h1>Tabla:</h1>
 <app-tabla></app-tabla>
 </section>
 
-<section class="page-section">
+<section class="page-section" id="community">
     <div class="contenedor-tarjetas">
         <ng-container *ngFor="let componente of componentes">
             <ng-container *ngIf="componente.tipo === 'ComponenteA'">
@@ -60,7 +60,8 @@
             </ng-container>
           </ng-container>
       </div>
-
+</section>
+<section class="page-section" id="Features">
       <div class="contenedor-features">
         <ng-container *ngFor="let componente of features">
               <app-feature [titulo]="componente.titulo" [texto]="componente.texto" [imagen]="componente.imagen"></app-feature>

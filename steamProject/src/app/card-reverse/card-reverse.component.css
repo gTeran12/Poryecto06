@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 40%; /* Ajusta la altura del contenedor a la altura de la ventana */
-    background-color: rgb(49, 49, 82);
+    background-color: #1d2024;
     color: white;
   }
   
@@ -21,4 +21,5 @@
     width: 200px; /* Ancho deseado para la imagen */
     height: auto; /* Altura ajustada automáticamente */
   }
+  
   

@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms'; // Import the FormsModule
 
 
 
-//Importación del módulo
+//Importación del módulos
 import { HttpClientModule } from  '@angular/common/http';
 import { TablaComponent } from './tabla/tabla.component';
 import { CardReverseComponent } from './card-reverse/card-reverse.component';

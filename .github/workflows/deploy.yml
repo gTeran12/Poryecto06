@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: "18"
       - name: Install deps
-        run: npm Install
+        run: npm install
 
       - name: Build
         run: npm run build:prod

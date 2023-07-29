@@ -10,3 +10,5 @@ export class FeatureComponent {
   @Input() texto: string='';
   @Input() imagen: string='';
 }
+
+//cambio minimo

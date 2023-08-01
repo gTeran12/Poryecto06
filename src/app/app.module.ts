@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms'; // Import the FormsModule
 
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+
+
+
 
 
 //Importación del módulos
@@ -14,6 +18,7 @@ import { TablaComponent } from './tabla/tabla.component';
 import { CardReverseComponent } from './card-reverse/card-reverse.component';
 import { CardComponent } from './card/card.component';
 import { FeatureComponent } from './feature/feature.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +26,15 @@ import { FeatureComponent } from './feature/feature.component';
     TablaComponent,
     CardReverseComponent,
     CardComponent,
-    FeatureComponent
+    FeatureComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CanvasJSAngularChartsModule
 
   ],
   providers: [],

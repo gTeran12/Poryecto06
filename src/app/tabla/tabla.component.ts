@@ -25,6 +25,9 @@ export class TablaComponent {
     } else if (this.selectedOption === 'showMostPlayed') {
       this.showMostPlayed();
     }
+    else if (this.selectedOption === 'showMostExpensive') {
+      this.showMostExpensive();
+    }
   }
 
   showMostRated() {
@@ -38,7 +41,7 @@ export class TablaComponent {
     this.data.sort((a, b) => parseInt(b.positive_ratings) - parseInt(a.positive_ratings));
 
     // Obtiene los 10 primeros elementos después de ordenarlos.
-    this.data = this.data.slice(0, 10);
+    this.data = this.data.slice(0, 30000);
   }
 
   showMostPlayed() {
@@ -47,6 +50,15 @@ export class TablaComponent {
     });
 
     this.data.sort((a, b) => parseInt(b.median_playtime) - parseInt(a.median_playtime));
-    this.data = this.data.slice(0, 10);
+    this.data = this.data.slice(0, 30000);
+  }
+
+  showMostExpensive() {
+    this.data.forEach((item) => {
+      item.price = (item.price); // Parse as floating-point number if 'price' is a decimal value.
+    });
+
+    this.data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    this.data = this.data.slice(0, 30000);
   }
 }

@@ -3,6 +3,7 @@
     <select [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
       <option value="showMostRated">Most Rated</option>
       <option value="showMostPlayed">Most Played</option>
+      <option value="showMostExpensive">Most Expensive</option>
     </select>
     <tbody>
       <tr>
@@ -10,6 +11,7 @@
         <td>Name</td>
         <td>Rating</td>
         <td>PlayTime</td>
+        <td>Price</td>
       </tr>
       <!-- Agregar la verificación de nulidad con el operador '?.' -->
       <tr *ngFor="let datum of data?.slice(0, 10) || []">
@@ -17,6 +19,8 @@
         <td>{{ datum.name }}</td>
         <td>{{ datum.positive_ratings }}</td>
         <td>{{ datum.median_playtime }}</td>
+        <td>{{ datum.price }}</td>
+
       </tr>      
     </tbody>
   </table>

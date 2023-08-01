@@ -27,7 +27,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     CardReverseComponent,
     CardComponent,
     FeatureComponent,
-
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +35,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     HttpClientModule,
     FormsModule,
     CanvasJSAngularChartsModule
+    
 
   ],
   providers: [],

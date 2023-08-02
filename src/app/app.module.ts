@@ -19,6 +19,7 @@ import { CardReverseComponent } from './card-reverse/card-reverse.component';
 import { CardComponent } from './card/card.component';
 import { FeatureComponent } from './feature/feature.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     CardReverseComponent,
     CardComponent,
     FeatureComponent,
-    BarChartComponent
+    BarChartComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     HttpClientModule,
     FormsModule,
     CanvasJSAngularChartsModule
-    
+
 
   ],
   providers: [],

@@ -1,93 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Interfaz } from 'src/interfaces/interfaz';
+import { ProveedorService } from 'src/providers/proveedor.service';
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class LineChartComponent {
-  chartOptions = {
-		animationEnabled: true,
-		theme: "light2",
-		title:{
-			text: "Site Traffic"
-		},
-		axisX:{
-			valueFormatString: "DD MMM",
-			crosshair: {
-				enabled: true,
-				snapToDataPoint: true
-			}
-		},
-		axisY: {
-			title: "Number of Visits",
-			crosshair: {
-				enabled: true
-			}
-		},
-		toolTip:{
-			shared:true
-		},
-		legend:{
-			cursor: "pointer",
-			verticalAlign: "bottom",
-			horizontalAlign: "right",
-			dockInsidePlotArea: true,
-			itemclick: function(e: any) {
-				if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-					e.dataSeries.visible = false;
-				} else{
-					e.dataSeries.visible = true;
-				}
-				e.chart.render();
-			}
-		},
-		data: [{
-			type: "line",
-			showInLegend: true,
-			name: "Total Visit",
-			lineDashType: "dash",
-			markerType: "square",
-			xValueFormatString: "DD MMM, YYYY",
-			dataPoints: [
-				{ x: new Date(2022, 0, 3), y: 650 },
-				{ x: new Date(2022, 0, 4), y: 700 },
-				{ x: new Date(2022, 0, 5), y: 710 },
-				{ x: new Date(2022, 0, 6), y: 658 },
-				{ x: new Date(2022, 0, 7), y: 734 },
-				{ x: new Date(2022, 0, 8), y: 963 },
-				{ x: new Date(2022, 0, 9), y: 847 },
-				{ x: new Date(2022, 0, 10), y: 853 },
-				{ x: new Date(2022, 0, 11), y: 869 },
-				{ x: new Date(2022, 0, 12), y: 943 },
-				{ x: new Date(2022, 0, 13), y: 970 },
-				{ x: new Date(2022, 0, 14), y: 869 },
-				{ x: new Date(2022, 0, 15), y: 890 },
-				{ x: new Date(2022, 0, 16), y: 930 }
-			]
-		},
-		{
-			type: "line",
-			showInLegend: true,
-			name: "Unique Visit",
-			lineDashType: "dot",
-			dataPoints: [
-				{ x: new Date(2022, 0, 3), y: 510 },
-				{ x: new Date(2022, 0, 4), y: 560 },
-				{ x: new Date(2022, 0, 5), y: 540 },
-				{ x: new Date(2022, 0, 6), y: 558 },
-				{ x: new Date(2022, 0, 7), y: 544 },
-				{ x: new Date(2022, 0, 8), y: 693 },
-				{ x: new Date(2022, 0, 9), y: 657 },
-				{ x: new Date(2022, 0, 10), y: 663 },
-				{ x: new Date(2022, 0, 11), y: 639 },
-				{ x: new Date(2022, 0, 12), y: 673 },
-				{ x: new Date(2022, 0, 13), y: 660 },
-				{ x: new Date(2022, 0, 14), y: 562 },
-				{ x: new Date(2022, 0, 15), y: 643 },
-				{ x: new Date(2022, 0, 16), y: 570 }
-			]
-		}]
-	}
-}
+export class LineChartComponent implements OnInit {
+  public data: Interfaz[] = [];
+  public chartOptions = {
+    animationEnabled: true,
+    theme: "light2",
+    title: {
+      text: "Top 10 Most Purchased Games and Ratings"
+    },
+    axisX: {
+      title: "Game",
+      interval: 1
+    },
+    axisY: {
+      title: "Number of Ratings",
+      includeZero: false
+    },
+    data: []
+  };
 
+  constructor(private dataProvider: ProveedorService) { }
+
+  ngOnInit() {
+    this.dataProvider.getResponse().subscribe((response) => {
+      this.data = response as Interfaz[];
+      this.showTopPurchasedGamesAndRatings();
+    });
+  }
+
+  showTopPurchasedGamesAndRatings() {
+    // Sort the data by the number of owners (assuming 'owners' is a numeric property)
+    this.data.sort((a, b) => parseInt(b.owners) - parseInt(a.owners));
+
+    // Get the top 10 most purchased games
+    const topPurchasedGames = this.data.slice(0, 10);
+
+    // Prepare data points for positive ratings and negative ratings
+    const positiveRatingsData = {
+      type: "line",
+      showInLegend: true,
+      name: "Positive Ratings",
+      dataPoints: []
+    };
+
+    const negativeRatingsData = {
+      type: "line",
+      showInLegend: true,
+      name: "Negative Ratings",
+      dataPoints: []
+    };
+
+    topPurchasedGames.forEach((game) => {
+      const gameName = game.name;
+      const positiveRatings = parseInt(game.positive_ratings);
+      const negativeRatings = parseInt(game.negative_ratings);
+
+      positiveRatingsData.dataPoints.push({ label: gameName, y: positiveRatings });
+      negativeRatingsData.dataPoints.push({ label: gameName, y: negativeRatings });
+    });
+
+    this.chartOptions.data = [positiveRatingsData, negativeRatingsData];
+  }
+}

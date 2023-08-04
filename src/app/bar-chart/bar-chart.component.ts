@@ -25,7 +25,7 @@ export class BarChartComponent implements OnInit {
 
   showTopRatedGamesByPrice() {
     this.data.forEach((item) => {
-      item.price = (item.price); 
+      item.price = (item.price);
     });
 
     this.data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
@@ -46,7 +46,7 @@ export class BarChartComponent implements OnInit {
 
     // Set the canvas size based on the number of data points
     canvas.width = this.chartData.length * 50; // Adjust the width based on your needs
-    canvas.height = 300; // Adjust the height based on your needs
+    canvas.height = 250; // Adjust the height based on your needs
 
     // Calculate the maximum value in the chart data
     const maxPrice = Math.max(...this.chartData);

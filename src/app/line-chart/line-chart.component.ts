@@ -69,3 +69,4 @@ export class LineChartComponent implements OnInit {
     this.chartOptions.data = [positiveRatingsData, negativeRatingsData];
   }
 }
+

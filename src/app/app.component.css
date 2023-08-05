@@ -7,8 +7,12 @@
   
   
   @media (max-width: 768px) {
-    .ccontenedor-features {
+    .contenedor-features {
       width: 90%; /* Ajusta el ancho de cada componente en dispositivos móviles */
     }
   }
-  
+
+#presentation{
+  text-align: center;
+}
+

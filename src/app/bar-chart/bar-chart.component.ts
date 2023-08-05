@@ -19,21 +19,26 @@ export class BarChartComponent implements OnInit {
   ngOnInit() {
     this.dataProvider.getResponse().subscribe((response) => {
       this.data = response as Interfaz[];
-      this.showTopRatedGamesByPrice();
+      this.showTopPurchasedGamesAndRatings();
     });
   }
 
-  showTopRatedGamesByPrice() {
+  showTopPurchasedGamesAndRatings() {
+    // Ensure that 'price', 'positive_ratings', and 'negative_ratings' are of numeric type in the 'Interfaz' interface.
     this.data.forEach((item) => {
       item.price = (item.price);
+      item.positive_ratings = (item.positive_ratings);
+      item.negative_ratings = (item.negative_ratings);
     });
 
+    // Sort the data by 'price' in descending order.
     this.data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
 
-    const topRatedGames = this.data.slice(0, 10);
+    // Get the top 10 games with highest prices.
+    const topPurchasedGames = this.data.slice(0, 10);
 
-    this.chartLabels = topRatedGames.map((game) => game.name);
-    this.chartData = topRatedGames.map((game) => game.price);
+    this.chartLabels = topPurchasedGames.map((game) => game.name);
+    this.chartData = topPurchasedGames.map((game) => game.price);
 
     // Render the chart on the canvas
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
@@ -45,8 +50,8 @@ export class BarChartComponent implements OnInit {
     const ctx = this.ctx;
 
     // Set the canvas size based on the number of data points
-    canvas.width = this.chartData.length * 50; // Adjust the width based on your needs
-    canvas.height = 250; // Adjust the height based on your needs
+    canvas.width = Math.max(1800); // Adjust the width based on your needs
+    canvas.height = 400; // Adjust the height based on your needs
 
     // Calculate the maximum value in the chart data
     const maxPrice = Math.max(...this.chartData);
@@ -55,8 +60,8 @@ export class BarChartComponent implements OnInit {
     const scaleY = canvas.height / maxPrice;
 
     // Bar width and spacing
-    const barWidth = 30;
-    const barSpacing = 10;
+    const barWidth = 150;
+    const barSpacing = 30;
 
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,10 +78,11 @@ export class BarChartComponent implements OnInit {
     // Draw the labels on the x-axis
     ctx.fillStyle = '#000';
     ctx.font = '12px Arial';
+    ctx.textAlign = 'center';
     for (let i = 0; i < this.chartLabels.length; i++) {
       const x = i * (barWidth + barSpacing) + barWidth / 2;
       const y = canvas.height - 5;
-      ctx.fillText(this.chartLabels[i], x, y, barWidth);
+      ctx.fillText(this.chartLabels[i], x, y);
     }
 
     // Draw the y-axis label

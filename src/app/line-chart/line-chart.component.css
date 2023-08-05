@@ -1,0 +1,15 @@
+
+/* Estilos para hacer los gráficos responsivos */
+.canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Ajusta el valor máximo según tus necesidades */
+    margin: 0 auto;
+  }
+  
+  .canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  

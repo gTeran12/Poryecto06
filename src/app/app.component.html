@@ -17,7 +17,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto my-2 my-lg-0">
-              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#graficas">Graphics</a></li>
               <li class="nav-item"><a class="nav-link" href="#table">Table</a></li>
               <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
               <li class="nav-item"><a class="nav-link" href="#Features">Features</a></li>
@@ -27,14 +27,25 @@
 </nav>
 <!-- Masthead-->
 
-<section>
-  <h1>Gráficos</h1>
-  <app-bar-chart></app-bar-chart>
-  <app-line-chart></app-line-chart>
+<body>
+
+<section class="page-section" id="presentation">
+<div>
+</div>
+</section>
+<section  id="graficas">
+  <div>
+    <h1 class="text-center">Top 10 games most purchased and price </h1>
+    <app-bar-chart></app-bar-chart>   
+  </div>
+  <div>
+    <app-line-chart></app-line-chart>
+  </div>
+  
 </section>
 <!-- Tabla -->
 <section class="page-section" id="table">
-<h1>Tabla:</h1>
+<h1 class="text-center text-white">Table:</h1>
 <app-tabla></app-tabla>
 </section>
 
@@ -64,3 +75,4 @@
 <footer class="bg-light py-5">
   <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Guillermo Teran & Daniel Fernandez</div></div>
 </footer>
+</body>

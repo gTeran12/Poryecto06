@@ -1,27 +1,40 @@
-
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40%;  
-    background-color: rgba(0,0,0,21);
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh; /* Fondo ocupa toda la pantalla */
+  background-color: #0e0c11;
+  color: white;
+  padding: 25px 0; /* Reducción del espacio superior e inferior */
+}
+
+.text {
+  flex: 1; /* Ocupa el espacio disponible */
+  margin-left: 25px; /* Margen de separación entre el texto y la imagen */
+  max-width: 300px; /* Ancho máximo deseado para el texto */
+}
+
+.image {
+  margin-right: 75px; /* Margen de separación entre la imagen y el texto */
+}
+
+.image img {
+  width: 200px; /* Ancho deseado para la imagen */
+  height: auto; /* Altura ajustada automáticamente */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Cambia a disposición vertical en dispositivos móviles */
+    padding: 15px 0; /* Reducción del espacio superior e inferior en dispositivos móviles */
   }
   
-  
-  .text {
-    margin-right: 10px; /* Margen de separación entre el texto y la imagen */
-    max-width: 300px; /* Ancho máximo deseado para el texto */
-  }
-  
-  
-  .image {
-    margin-left: 10px; /* Margen de separación entre la imagen y el texto */
+  .text, .image {
+    flex: 100%; /* Ocupan todo el ancho en dispositivos móviles */
   }
   
   .image img {
-    width: 200px; /* Ancho deseado para la imagen */
-    height: auto; /* Altura ajustada automáticamente */
+    width: 150px; /* Reducción del ancho de la imagen en dispositivos móviles */
   }
-  
-  
+}
+

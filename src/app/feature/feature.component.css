@@ -1,21 +1,29 @@
+.feature {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
 .circle {
-    width: 100px; /* Ajusta el ancho y el alto según tus necesidades */
-    height: 100px;
-    border-radius: 50%; /* Aplica un borde circular */
-    overflow: hidden; /* Oculta cualquier contenido que exceda el área del círculo */
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 0);
-    
-  }
-  
-  .text {
-    max-width: 300px; /* Ancho máximo deseado para el texto */
-    
-  }
-  
-  
-  .image img {
-    height: auto; /* Altura ajustada automáticamente */
-  }
-  
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid white; /* Agrega el borde blanco */
+}
+
+.text {
+  max-width: 300px;
+  margin: 10px;
+}
+
+.img {
+  max-width: 100%; /* Ajusta el tamaño de la imagen al círculo */
+  height: auto;
+}

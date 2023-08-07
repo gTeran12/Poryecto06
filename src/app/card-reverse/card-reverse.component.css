@@ -1,25 +1,38 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40%; /* Ajusta la altura del contenedor a la altura de la ventana */
-    background-color: #1d2024;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh; /* Fondo ocupa toda la pantalla */
+  background-color: #000000;
+  color: white;
+  padding: 25px 0; /* Reducción del espacio superior e inferior */
+}
+
+.text {
+  margin-right: 25px; /* Margen de separación entre el texto y la imagen */
+  max-width: 300px; /* Ancho máximo deseado para el texto */
+}
+
+.image {
+  margin-left: 25px; /* Margen de separación entre la imagen y el texto */
+}
+
+.image img {
+  width: 200px; /* Ancho deseado para la imagen */
+  height: auto; /* Altura ajustada automáticamente */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Cambia a disposición vertical en dispositivos móviles */
+    padding: 15px 0; /* Reducción del espacio superior e inferior en dispositivos móviles */
   }
   
-  .text {
-    margin-right: 10px; /* Margen de separación entre el texto y la imagen */
-    max-width: 300px; /* Ancho máximo deseado para el texto */
-  }
-  
-  
-  .image {
-    margin-left: 10px; /* Margen de separación entre la imagen y el texto */
+  .text, .image {
+    flex: 100%; /* Ocupan todo el ancho en dispositivos móviles */
   }
   
   .image img {
-    width: 200px; /* Ancho deseado para la imagen */
-    height: auto; /* Altura ajustada automáticamente */
+    width: 150px; /* Reducción del ancho de la imagen en dispositivos móviles */
   }
-  
-  
+}

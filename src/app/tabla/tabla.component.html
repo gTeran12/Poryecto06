@@ -9,9 +9,11 @@
       <tr>
         <td>Genres</td>
         <td>Name</td>
-        <td>Rating</td>
+        <td>Positive Rating</td>
         <td>PlayTime</td>
         <td>Price</td>
+        <td>Release date</td>
+
       </tr>
       <!-- Agregar la verificación de nulidad con el operador '?.' -->
       <tr *ngFor="let datum of data?.slice(0, 10) || []">
@@ -20,7 +22,7 @@
         <td>{{ datum.positive_ratings }}</td>
         <td>{{ datum.median_playtime }}</td>
         <td>{{ datum.price }}</td>
-
+        <td>{{ datum.release_date }}</td>
       </tr>      
     </tbody>
   </table>

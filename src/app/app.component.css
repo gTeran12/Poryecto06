@@ -1,18 +1,26 @@
-.contenedor-features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-  }
-  
-  
-  @media (max-width: 768px) {
-    .contenedor-features {
-      width: 90%; /* Ajusta el ancho de cada componente en dispositivos móviles */
-    }
-  }
+/* Estilo de sección */
+.page-section {
+  background-color: black;
+  padding: 50px 0; /* Ajusta el espaciado interno superior e inferior */
+  margin: 0; /* Elimina los márgenes */
+}
 
-#presentation{
-  text-align: center;
+.contenedor-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+}
+
+.app-feature {
+  flex-basis: calc(33.33% - 20px); /* Divide en 3 columnas con margen */
+  margin: 10px; /* Agrega espacio entre los componentes */
+}
+
+
+@media (max-width: 768px) {
+  .contenedor-features {
+    width: 100%; /* Ajusta el ancho al 100% en dispositivos móviles */
+  }
 }
 

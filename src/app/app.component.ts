@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'steamProject';
   componentes = [
-    { tipo: 'ComponenteA', titulo: 'Únete a la comunidad' , texto: '¡Conoce nuevas personas, únete a grupos, forma clanes, chatea mientras juegas y mucho más! Con más de 100 millones de posibles amigos (o enemigos), la diversión nunca termina.', imagen: '../assets/img/join.png' },
-    { tipo: 'ComponenteB', titulo: 'Descubre el hardware de Steam' ,  texto: 'Creamos Steam Deck y el visor de Valve Index para que jugar en PC sea aún mejor.', imagen: '../assets/img/experience.png' },
-    { tipo: 'ComponenteA', titulo: 'Lanza tu juego' ,  texto: 'Steamworks es un conjunto de herramientas y servicios que ayuda a desarrolladores y editores a sacar el máximo partido a la distribución de juegos en Steam.', imagen: '../assets/img/release.png' },
+    { tipo: 'ComponenteA', titulo: 'Únete a la comunidad' , texto: '¡Conoce nuevas personas, únete a grupos, forma clanes, chatea mientras juegas y mucho más! Con más de 100 millones de posibles amigos (o enemigos), la diversión nunca termina.', imagen: '../assets/img/comunidad.png' },
+    { tipo: 'ComponenteB', titulo: 'Descubre el hardware de Steam' ,  texto: 'Creamos Steam Deck y el visor de Valve Index para que jugar en PC sea aún mejor.', imagen: '../assets/img/hardware.png' },
+    { tipo: 'ComponenteA', titulo: 'Lanza tu juego' ,  texto: 'Steamworks es un conjunto de herramientas y servicios que ayuda a desarrolladores y editores a sacar el máximo partido a la distribución de juegos en Steam.', imagen: '../assets/img/juego.png' },
     // Agregar más componentes según sea necesario
   ];
 

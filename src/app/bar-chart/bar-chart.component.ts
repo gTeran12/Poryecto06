@@ -9,84 +9,74 @@ import { ProveedorService } from 'src/providers/proveedor.service';
 })
 export class BarChartComponent implements OnInit {
   public data: Interfaz[] = [];
-  @ViewChild('canvas', { static: true }) canvasRef: ElementRef;
-  private ctx: CanvasRenderingContext2D;
-  public chartLabels: string[] = [];
-  public chartData: any[] = [];
+  public chartOptions = {
+    animationEnabled: true,
+    theme: "light2",
+    title: {
+      text: "Top 10 Most Expensive and Ratings"
+    },
+    axisX: {
+      title: "Game",
+      interval: 1
+    },
+    axisY: {
+      title: "Price",
+      includeZero: false
+    },
+    data: []
+  };
 
   constructor(private dataProvider: ProveedorService) { }
 
   ngOnInit() {
     this.dataProvider.getResponse().subscribe((response) => {
       this.data = response as Interfaz[];
-      this.showTopPurchasedGamesAndRatings();
+      this.showTopExpensive();
     });
   }
 
-  showTopPurchasedGamesAndRatings() {
-    // Ensure that 'price', 'positive_ratings', and 'negative_ratings' are of numeric type in the 'Interfaz' interface.
-    this.data.forEach((item) => {
-      item.price = (item.price);
-      item.positive_ratings = (item.positive_ratings);
-      item.negative_ratings = (item.negative_ratings);
-    });
-
-    // Sort the data by 'price' in descending order.
+  showTopExpensive() {
+    // Sort the data by the price)
     this.data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
 
-    // Get the top 10 games with highest prices.
+    // Get the top 10 most purchased games
     const topPurchasedGames = this.data.slice(0, 10);
 
-    this.chartLabels = topPurchasedGames.map((game) => game.name);
-    this.chartData = topPurchasedGames.map((game) => game.price);
+    // Prepare data points for positive ratings and negative ratings
+    const positiveRatingsData = {
+      type: "line",
+      showInLegend: true,
+      name: "Positive Ratings",
+      dataPoints: []
+    };
 
-    // Render the chart on the canvas
-    this.ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.renderBarChart();
+    const negativeRatingsData = {
+      type: "line",
+      showInLegend: true,
+      name: "Negative Ratings",
+      dataPoints: []
+    };
+
+    const prices = {
+      type: "column",
+      showInLegend: true,
+      name: "Price",
+      dataPoints: []
+    };
+
+    topPurchasedGames.forEach((game) => {
+      const gameName = game.name;
+      const positiveRatings = parseInt(game.positive_ratings);
+      const negativeRatings = parseInt(game.negative_ratings);
+      const price = parseFloat(game.price);
+
+      positiveRatingsData.dataPoints.push({ label: gameName, y: positiveRatings });
+      negativeRatingsData.dataPoints.push({ label: gameName, y: negativeRatings });
+      prices.dataPoints.push({ label: gameName, y: price });
+
+    });
+
+    this.chartOptions.data = [prices, positiveRatingsData, negativeRatingsData];
   }
 
-  renderBarChart() {
-    const canvas = this.canvasRef.nativeElement;
-    const ctx = this.ctx;
-
-    // Set the canvas size based on the number of data points
-    canvas.width = Math.max(1800); // Adjust the width based on your needs
-    canvas.height = 400; // Adjust the height based on your needs
-
-    // Calculate the maximum value in the chart data
-    const maxPrice = Math.max(...this.chartData);
-
-    // Set the scale for the y-axis
-    const scaleY = canvas.height / maxPrice;
-
-    // Bar width and spacing
-    const barWidth = 150;
-    const barSpacing = 30;
-
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw the bars
-    ctx.fillStyle = '#01b8aa';
-    for (let i = 0; i < this.chartData.length; i++) {
-      const x = i * (barWidth + barSpacing);
-      const barHeight = this.chartData[i] * scaleY;
-      const y = canvas.height - barHeight;
-      ctx.fillRect(x, y, barWidth, barHeight);
-    }
-
-    // Draw the labels on the x-axis
-    ctx.fillStyle = '#000';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'center';
-    for (let i = 0; i < this.chartLabels.length; i++) {
-      const x = i * (barWidth + barSpacing) + barWidth / 2;
-      const y = canvas.height - 5;
-      ctx.fillText(this.chartLabels[i], x, y);
-    }
-
-    // Draw the y-axis label
-    ctx.textAlign = 'right';
-    ctx.fillText('Price', 40, 10);
-  }
 }
